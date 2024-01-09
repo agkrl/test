@@ -1,0 +1,21 @@
+name: Building gulp
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node ${{ env.NODE_VERSION }} Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Gulp
+        run: npm install && npm run gulp:build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: css
+          path: ./_site/assets/css/main.css
