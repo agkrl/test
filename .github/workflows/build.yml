@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Gulp
-          run: npm install && npm run gulp:build && cp ./_site/assets/app.css ./ && ls
+        run: npm install && npm run gulp:build && cp ./_site/assets/app.css ./ && ls
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
