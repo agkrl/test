@@ -5,9 +5,9 @@ const spawn = require('cross-spawn')
 const browserSync = require('browser-sync').create()
 
 function styles() {
-  return src('./main.scss')
+  return src('./assets/app.scss')
     .pipe(sass())
     .pipe(postcss())
-    .pipe(dest('./_site/assets/css'))
+    .pipe(dest('./_site/assets/'))
 }
 exports.styles = series(styles)
