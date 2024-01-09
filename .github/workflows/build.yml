@@ -14,13 +14,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - name: Gulp
+          run: npm install && npm run gulp:build && cp ./_site/assets/app.css ./ && ls
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-      - name: Gulp
-        run: npm install && npm run gulp:build
+      - name: Copy css to site
+        run: mv ./app.css ./_site/assets/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
